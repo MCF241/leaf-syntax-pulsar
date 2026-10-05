@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#(page.title)</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    </style>
+</head>
+<body>
+    #// Welcome section - variables in red
+    <header>
+        <h1>Welcome #(user.name)! 👋</h1>
+        <p>Last login: #(user.lastLogin)</p>
+    </header>
+
+    #// Control flow - keywords in purple
+    <section>
+        <h2>#(section.title)</h2>
+        #if(user.isAdmin)
+            <div class="admin-panel">
+                <h3>Admin Controls</h3>
+                <p>You have admin access.</p>
+            </div>
+        #elseif(user.isPremium)
+            <div class="premium-features">
+                <h3>Premium Features</h3>
+                <p>Enjoy your premium membership!</p>
+            </div>
+        #else
+            <div class="free-tier">
+                <p>Upgrade to premium for more features.</p>
+            </div>
+        #endif
+    </section>
+
+    #// Loops - keywords in purple, variables in red
+    <section>
+        <h3>Your Items</h3>
+        #if(items.count > 0)
+            <ul>
+                #for(item in items)
+                    <li class="#(item.category)">
+                        <strong>#(item.name)</strong>
+                        <span class="price">$#(item.price)</span>
+                        #if(item.onSale)
+                            <span class="badge">On Sale!</span>
+                        #endif
+                    </li>
+                #endfor
+            </ul>
+        #else
+            <p>No items found.</p>
+        #endif
+    </section>
+
+    #// Switch statement
+    #switch(user.role)
+    #case("admin"):
+        <p>User Role: Administrator</p>
+    #case("moderator"):
+        <p>User Role: Moderator</p>
+    #case("user"):
+        <p>User Role: Regular User</p>
+    #default:
+        <p>User Role: Unknown</p>
+    #endswitch
+
+    #// Functions in blue
+    <section>
+        <h3>Included Components</h3>
+        #import("components/navigation")
+        #import("components/sidebar")
+    </section>
+
+    #// Multiline comment in gray
+    ###
+        This is a multiline Leaf comment.
+        It can span across multiple lines
+        and is useful for longer explanations.
+    ###
+
+    #// More functions
+    <section>
+        <h3>Rendered Widgets</h3>
+        #call("renderUserCard", user, showEmail: true)
+        #embed("widgets/featured-products")
+    </section>
+
+    #// Define and use macros
+    #define(userGreeting):
+        <div class="greeting">
+            <p>Hello #(user.name), welcome to our app!</p>
+            <p>Today is a great day to #(todaysActivity)!</p>
+        </div>
+    #enddefine
+
+    #// Use the macro
+    #call("userGreeting")
+
+    <footer>
+        <p>
+            #if(showFooter)
+                #(user.name) has #(user.itemCount) items in #(user.collectionCount) collections.
+                Last updated: #(user.lastUpdate)
+            #endif
+        </p>
+    </footer>
+</body>
+</html>

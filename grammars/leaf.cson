@@ -1,0 +1,151 @@
+'scopeName': 'text.html.leaf'
+'name': 'Leaf'
+'fileTypes': ['leaf']
+
+'patterns': [
+  # Leaf Comments (HIGH PRIORITY)
+  {
+    'name': 'comment.block.leaf'
+    'begin': '###'
+    'end': '###'
+  }
+  {
+    'name': 'comment.line.leaf'
+    'match': '#//.*$'
+  }
+
+  # HTML Comments
+  {
+    'name': 'comment.block.html'
+    'begin': '<!--'
+    'end': '-->'
+  }
+
+  # DOCTYPE Declaration
+  {
+    'name': 'meta.tag.metadata.doctype.html'
+    'match': '(?i)<!DOCTYPE\\s+[^>]*>'
+  }
+
+  # Leaf Variables #(...)
+  {
+    'name': 'variable.leaf'
+    'match': '#\\([^)]*\\)'
+  }
+
+  # Leaf Control Keywords
+  {
+    'name': 'keyword.control.leaf'
+    'match': '#(if|else|elseif|endif|switch|case|default|endswitch|for|in|endfor|while|endwhile|break|continue)(?!\\w)'
+  }
+
+  # Leaf Functions
+  {
+    'name': 'support.function.leaf'
+    'match': '#(import|export|extend|define|enddefine|call|embed|set|render|each|inject|unless)(?!\\w)'
+  }
+
+  # HTML Tags - Opening and Self-closing
+  {
+    'begin': '<(?!/)([a-zA-Z][a-zA-Z0-9-]*)'
+    'beginCaptures':
+      '1':
+        'name': 'entity.name.tag.html'
+    'end': '/?>'
+    'name': 'meta.tag.html'
+    'patterns': [
+      # HTML Attributes
+      {
+        'name': 'entity.other.attribute-name.html'
+        'match': '(?<![=/\\-\\w])[a-zA-Z_][a-zA-Z0-9_:.-]*(?=\\s|=|>|/)'
+      }
+      # Attribute values - Double quoted
+      {
+        'begin': '="'
+        'end': '"'
+        'name': 'string.quoted.double.html'
+        'patterns': [
+          {
+            'name': 'variable.leaf'
+            'match': '#\\([^)]*\\)'
+          }
+        ]
+      }
+      # Attribute values - Single quoted
+      {
+        'begin': "='"
+        'end': "'"
+        'name': 'string.quoted.single.html'
+        'patterns': [
+          {
+            'name': 'variable.leaf'
+            'match': '#\\([^)]*\\)'
+          }
+        ]
+      }
+      # Unquoted attribute values
+      {
+        'name': 'string.unquoted.html'
+        'match': '=[^\\s>]+'
+      }
+    ]
+  }
+
+  # HTML Tags - Closing
+  {
+    'begin': '</'
+    'end': '>'
+    'name': 'meta.tag.html'
+    'patterns': [
+      {
+        'name': 'entity.name.tag.html'
+        'match': '[a-zA-Z][a-zA-Z0-9-]*'
+      }
+    ]
+  }
+
+  # HTML Entities
+  {
+    'name': 'constant.character.entity.html'
+    'match': '&(?:[a-zA-Z]+|#[0-9]+|#x[0-9a-fA-F]+);'
+  }
+
+  # Double-quoted strings
+  {
+    'name': 'string.quoted.double'
+    'begin': '"'
+    'end': '"'
+    'patterns': [
+      {
+        'name': 'constant.character.escape'
+        'match': '\\\\.'
+      }
+    ]
+  }
+
+  # Single-quoted strings
+  {
+    'name': 'string.quoted.single'
+    'begin': "'"
+    'end': "'"
+    'patterns': [
+      {
+        'name': 'constant.character.escape'
+        'match': '\\\\.'
+      }
+    ]
+  }
+
+  # Numbers
+  {
+    'name': 'constant.numeric'
+    'match': '\\b([0-9]+\\.?[0-9]*)\\b'
+  }
+]
+
+'repository': {
+  'leaf-variable': {
+    'name': 'variable.leaf'
+    'match': '#\\([^)]*\\)'
+  }
+}

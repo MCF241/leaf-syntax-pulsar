@@ -1,0 +1,157 @@
+// Leaf Syntax Highlighter v2.0 - Enhanced Styles
+// Professional color scheme for Leaf + HTML templates
+
+// ============================================
+// COLOR VARIABLES
+// ============================================
+
+@leaf-variable: #d63030;              // Red - Leaf variables #(x)
+@leaf-keyword: #9933cc;               // Purple - Leaf control flow
+@leaf-function: #0066cc;              // Blue - Leaf functions
+
+@html-tag: #2e8cd4;                   // Sky Blue - HTML tag names
+@html-attribute: #e67e22;             // Orange - HTML attribute names
+@html-value: #e74c3c;                 // Red - HTML attribute values
+@html-entity: #27ae60;                // Green - HTML entities
+@html-comment: #7f8c8d;               // Dark Gray - HTML comments
+
+@comment-color: #999999;              // Gray - Comments
+@string-color: #e74c3c;               // Red - Strings
+@number-color: #27ae60;               // Green - Numbers
+
+// ============================================
+// LEAF SYNTAX
+// ============================================
+
+// Leaf Variables: #(variableName)
+.variable.leaf {
+  color: @leaf-variable;
+  font-weight: bold;
+}
+
+// Leaf Keywords: #if, #for, #switch, etc.
+.keyword.control.leaf {
+  color: @leaf-keyword;
+  font-weight: bold;
+}
+
+// Leaf Functions: #import, #call, #render, etc.
+.support.function.leaf {
+  color: @leaf-function;
+  font-weight: bold;
+}
+
+// Leaf Comments
+.comment.line.leaf {
+  color: @comment-color;
+  font-style: italic;
+}
+
+.comment.block.leaf {
+  color: @comment-color;
+  font-style: italic;
+}
+
+// ============================================
+// HTML SYNTAX
+// ============================================
+
+// HTML Tag Container
+.meta.tag.html {
+  color: @html-tag;
+}
+
+// HTML Tag Names: <div>, <p>, <span>, etc.
+.entity.name.tag.html {
+  color: @html-tag;
+  font-weight: bold;
+}
+
+// HTML Attribute Names: class, id, data-*, etc.
+.entity.other.attribute-name.html {
+  color: @html-attribute;
+  font-weight: normal;
+}
+
+// HTML Attribute Values (quoted)
+.string.quoted.double.html,
+.string.quoted.single.html {
+  color: @html-value;
+}
+
+// HTML Unquoted Attribute Values
+.string.unquoted.html {
+  color: @html-value;
+}
+
+// HTML Entities: &amp;, &#123;, etc.
+.constant.character.entity.html {
+  color: @html-entity;
+  font-weight: bold;
+}
+
+// HTML Comments: <!-- -->
+.comment.block.html {
+  color: @html-comment;
+  font-style: italic;
+}
+
+// DOCTYPE Declaration
+.meta.tag.metadata.doctype.html {
+  color: @html-tag;
+  font-weight: bold;
+}
+
+// ============================================
+// STRING & NUMBER LITERALS
+// ============================================
+
+// Double-quoted strings
+.string.quoted.double {
+  color: @string-color;
+}
+
+// Single-quoted strings
+.string.quoted.single {
+  color: @string-color;
+}
+
+// Escape sequences in strings
+.constant.character.escape {
+  color: @leaf-keyword;
+  font-weight: bold;
+}
+
+// Numbers
+.constant.numeric {
+  color: @number-color;
+  font-weight: bold;
+}
+
+// ============================================
+// THEME OVERRIDES (for better contrast)
+// ============================================
+
+// Ensure colors are visible even with different themes
+atom-text-editor {
+  .entity.name.tag.html {
+    color: @html-tag !important;
+  }
+
+  .entity.other.attribute-name.html {
+    color: @html-attribute !important;
+  }
+
+  .string.quoted.double.html,
+  .string.quoted.single.html {
+    color: @html-value !important;
+  }
+
+  .constant.character.entity.html {
+    color: @html-entity !important;
+  }
+
+  .comment.block.html {
+    color: @html-comment !important;
+  }
+}
