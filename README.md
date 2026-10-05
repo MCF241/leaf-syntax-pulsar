@@ -151,6 +151,16 @@ Contributions are welcome! Please submit:
 - Grammar improvements
 - Style enhancements
 
+### 🤖 Generated with AI assistance
+
+This package has been created with AI assistance by Claude (Anthropic).
+
+- Features : MCF241
+- Grammar CSON : Claude
+- Styles LESS : Claude  
+- Architecture : MCF241 + Claude
+- Tests : MCF241
+
 ## License
 
 MIT License - See LICENSE file for details
