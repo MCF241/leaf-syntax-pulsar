@@ -1,0 +1,14 @@
+# .npmignore
+.git
+.gitignore
+.DS_Store
+*.swp
+*.swo
+node_modules/
+.idea/
+.vscode/
+example.leaf
+README.md
+LICENSE
+INSTALL.sh
+install-custom.sh

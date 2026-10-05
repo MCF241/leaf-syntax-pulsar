@@ -1,6 +1,6 @@
 {
   "name": "leaf-syntax",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Professional Leaf template syntax highlighting for Pulsar Edit with enhanced HTML coloration",
   "main": "lib/leaf-syntax.js",
   "keywords": [
